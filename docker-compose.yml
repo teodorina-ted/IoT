@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # Quesito 4 & 5: MQTT Broker container
+  # Provides the 'sistema di scambio' required for external devices
+  mqtt-broker:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto_broker
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: always
+
+  # Quesito 2: Database container (Suggested DBMS: InfluxDB)
+  # Provides the 'sistema di memorizzazione' for temperature data
+  database:
+    image: influxdb:latest
+    container_name: iot_database
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password123
+      - DOCKER_INFLUXDB_INIT_ORG=my-org
+      - DOCKER_INFLUXDB_INIT_BUCKET=temperature_data
+    restart: always

@@ -1,0 +1,234 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Verifica IoT",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c32f15e10be9f4c5",
+        "type": "ui_slider",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "label": "Set Temperature",
+        "tooltip": "",
+        "group": "group1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "chamber/temperature",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "921742d4bb747fb9",
+                "2eb8fd3d01ec8b5e"
+            ]
+        ]
+    },
+    {
+        "id": "2eb8fd3d01ec8b5e",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "group1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Chamber Temp",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#66ff00",
+            "#ffea00",
+            "#fa7000"
+        ],
+        "seg1": "10",
+        "seg2": "20",
+        "diff": false,
+        "className": "",
+        "x": 340,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "921742d4bb747fb9",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "Logic Q3",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "0",
+                "vt": "num",
+                "v2": "10",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "10",
+                "vt": "num",
+                "v2": "20",
+                "v2t": "num"
+            },
+            {
+                "t": "gt",
+                "v": "30",
+                "vt": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "20",
+                "vt": "num",
+                "v2": "30",
+                "v2t": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "6100878fc55e244f"
+            ],
+            [
+                "84bfbc10fa51f829"
+            ],
+            [
+                "5d6d414910757415"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6100878fc55e244f",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Green",
+        "func": "msg.background = \"green\";\nmsg.payload = \"L1 ACTIVE\";\nreturn msg;",
+        "outputs": 1,
+        "x": 490,
+        "y": 140,
+        "wires": [
+            [
+                "dee90f781aa54653"
+            ]
+        ]
+    },
+    {
+        "id": "84bfbc10fa51f829",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Yellow",
+        "func": "msg.background = \"yellow\";\nmsg.payload = \"L2 ACTIVE\";\nreturn msg;",
+        "outputs": 1,
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "0a59e21fbfb9acd3"
+            ]
+        ]
+    },
+    {
+        "id": "5d6d414910757415",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "Red",
+        "func": "msg.background = \"red\";\nmsg.payload = \"L3 ACTIVE\";\nreturn msg;",
+        "outputs": 1,
+        "x": 490,
+        "y": 220,
+        "wires": [
+            [
+                "c0b086d338f0e401"
+            ]
+        ]
+    },
+    {
+        "id": "dee90f781aa54653",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "group1",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status L1",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 660,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "0a59e21fbfb9acd3",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "group1",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status L2",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 660,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c0b086d338f0e401",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "group1",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status L3",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 660,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "group1",
+        "type": "ui_group",
+        "name": "Climate Control",
+        "tab": "tab1",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab1",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "ae6531808545f3f9",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]

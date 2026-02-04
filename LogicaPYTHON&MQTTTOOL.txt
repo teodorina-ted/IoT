@@ -1,0 +1,31 @@
+==========================================================
+RELAZIONE TECNICA - STEP 1: LOGICA PYTHON & MQTTTOOL
+Studente: Teodorina Lungu
+==========================================================
+
+1. DESCRIZIONE:
+Questa fase iniziale dimostra il funzionamento del "motore" logico. 
+Lo script Python (`main_iot.py`) invia dati grezzi al broker per 
+verificare la corretta comunicazione tra i sistemi.
+
+2. RISPOSTE AI QUESITI:
+- Q1 (GUI): In questa fase, l'interfaccia è costituita dal terminale 
+  e dai messaggi in arrivo su MQTTTool.
+- Q3 (Logica): Implementazione dei range tramite costrutti IF/ELSE:
+    * 0-10°C: Pubblicazione stringa "Safe"
+    * 10-20°C: Pubblicazione stringa "Warning"
+    * 20-50°C: Pubblicazione stringa "Alarm"
+- Q4 (MQTT): Protocollo testato con successo su porta 1883.
+
+3. PROVA MOBILE (MQTTTool):
+È stata utilizzata l'infrastruttura di rete della scuola (Wi-Fi FITSTIC)
+È stato utilizzato lo smartphone con l'app "MQTTTool":
+- Connessione IP: 192.168.33.193
+- Topic: chamber/temperature
+- Test Mobile: Lo smartphone, collegato alla stessa rete scolastica, 
+  ha ricevuto correttamente i dati tramite il broker Mosquitto.
+
+  PROVA VISIVA (Screenshot):
+Vedere Pagina 1 del PDF "VerificaIoT.pdf": mostra lo smartphone 
+connesso all'IP della scuola che riceve i messaggi della Climate Chamber.
+==========================================================

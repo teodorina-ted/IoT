@@ -1,0 +1,32 @@
+==========================================================
+RELAZIONE TECNICA - STEP 2: DOCKER & NODE-RED DASHBOARD
+Studente: Teodorina Lungu
+==========================================================
+
+1. DESCRIZIONE:
+Evoluzione del progetto in un'architettura a microservizi. Il sistema 
+è ora grafico, interattivo e orchestrato tramite container.
+
+2. RISPOSTE AI QUESITI:
+- Q1 (GUI): Dashboard Node-RED con Slider, Gauge (termometro) e 4 stati.
+- Q3 (Logica Avanzata): Gestione dinamica dei colori e dei messaggi:
+    * L1 (VERDE): 0-10°C
+    * L2 (GIALLO): 10-20°C
+    * L3 (ROSSO): 20-50°C
+    * EXTRA (ARANCIONE): Stato "WARNING" (Status L4) tra 20-30°C.
+- Q4 (Protocollo): Sincronizzazione bidirezionale tra GUI e Broker.
+- Q5 (Docker): Utilizzo di Docker Compose per gestire 'mynodered' 
+  e 'mosquitto_broker' come servizi isolati.
+
+3. ACCESSO MOBILE E RETE SCOLASTICA:
+Per il Quesito 1 e 4, la Dashboard è stata esposta sulla rete locale della scuola:
+- Indirizzo locale: http://192.168.33.193:1880/ui
+- Configurazione: Il sistema Docker è stato configurato per rispondere 
+  sull'interfaccia di rete Wi-Fi dell'istituto, permettendo al professore 
+  di visualizzare la dashboard da un secondo dispositivo (tablet o smartphone).
+
+  PROVA VISIVA (Screenshot):
+Vedere Pagine 2, 3 e 4 del PDF "VerificaIoT.pdf" per i dettagli 
+del flusso e della Dashboard sincronizzata.
+==========================================================
+==========================================================
